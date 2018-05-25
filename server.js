@@ -11,7 +11,7 @@ const app = express();
 // app.use(cors());
 
 // ping me to get the api key  - keson.tan@gmail.com
-const apiKey = '6478fe002b08384d330163031958e324';
+const apiKey = '#########################';
 
 // 
 app.get('/api/current', (req, response) => {
