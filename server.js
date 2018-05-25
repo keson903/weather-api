@@ -11,7 +11,7 @@ const app = express();
 // app.use(cors());
 
 // ping me to get the api key  - keson.tan@gmail.com
-const apiKey = '####################';
+const apiKey = '6478fe002b08384d330163031958e324';
 
 // 
 app.get('/api/current', (req, response) => {
@@ -46,10 +46,14 @@ function callback(req, response, antipode = false) {
         }
 
         weatherRes = JSON.parse(weatherRes);
-
-        if (weatherRes.cod !== '200' || weatherRes.list.length === 0) {
+        if (weatherRes.cod !== '200') {
             return http.InternalServerError("Invalid lat or lon");
         }
+
+        if (weatherRes.list.length === 0) {
+            return http.InternalServerError("API is unavailable");
+        }
+
 
         const nearby = weatherRes.list[0];
         nearby.main = nearby.main || {};

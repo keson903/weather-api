@@ -3,13 +3,16 @@
 class Geolocation {
 
     constructor(lat, lon) {
+        var _lat = Number(lat || 0),
+            _lon = Number(lon || 0);
+
         this.current = {
-            lat: Number(lat || 0).toFixed(2),
-            lon: Number(lon || 0).toFixed(2),
+            lat: _lat,
+            lon: _lon,
         }
         this.antipode = {
-            lat: -lat,
-            lon: lon > 0 ? lon - 180 : lon + 180
+            lat: -_lat,
+            lon: _lon > 0 ? _lon - 180 : _lon + 180
         }
     }
 }
